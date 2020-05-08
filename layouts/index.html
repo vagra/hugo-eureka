@@ -1,35 +1,6 @@
 {{ define "main" }}
-<section class="section">
-    <div class="container">
-        <div class="columns">
-            <div class="column is-one-quarter">
-                <h1 class="title">
-                    Recent Post
-                </h1>
-            </div>
-            <div class="column">
-                <div class="box">
-                    <p class="title">
-                        “There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.”
-                    </p>
-                    <p class="subtitle">
-                        Jeff Atwood
-                    </p>
-                    <a href="/post/test/">点击阅读全文</a>
-                </div>
-                <div class="box">
-                    <p class="title">
-                        “There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.”
-                      </p>
-                      <p class="subtitle">
-                        Jeff Atwood
-                      </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="hero is-fullheight is-primary">
+<main>
+  <section class="hero is-fullheight-with-navbar is-primary">
     <div class="hero-body">
       <div class="container">
         <h1 class="title">
@@ -40,12 +11,42 @@
         </h2>
       </div>
     </div>
-</section>
-<section class="section">
+  </section>
+
+  {{ if isset .Params "title" }}
+  <section class="section">
     <div class="container">
+      <article>
+        <h1 class="title">
+          {{.Title}}
+        </h1>
+        {{ with .Content }}
         <div class="content">
-            {{ .Content }}
+          {{ . }}
         </div>
+        {{ end }}
+      </article>
     </div>
-</section>
+  </section>
+  {{ end }}
+
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-one-quarter">
+          <h1 class="title">
+            Recent Page
+          </h1>
+        </div>
+        <div class="column">
+          {{ range first 10 .Site.RegularPages }}
+            {{ partial "summary.html" . }}
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+  
 {{ end }}
+

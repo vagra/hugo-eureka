@@ -8,11 +8,12 @@ description = ""
 homepage = "http://example.com/"
 tags = []
 features = []
-min_version = "0.41.0"
+min_version = "0.60.0"
 
-[author]
-  name = "C. Wang"
-  homepage = "https://wcc.im/"
+authors = [
+  {name = "C. Wang", homepage = "https://wcc.im/"},
+  {name = "R. Ma", homepage = "https://ruiqima.com/"}
+]
 
 # If porting an existing theme
 [original]

@@ -1,5 +1,6 @@
 {{ define "main" }}
 <main>
+  
   <section class="section">
     <div class="container">
         <article>
@@ -12,16 +13,14 @@
         </article>
       </div>
   </section>
-  
+
   <section class="section">
     <div class="container">
       {{ range .Pages }}
-      <h2 class="subtitle">
-        <a href="{{.Permalink}}">{{.Title}}</a>
-      </h2>
+        {{ partial "summary.html" . }}
       {{ end }}
     </div>
   </section>
-  
+
 </main>
 {{ end }}

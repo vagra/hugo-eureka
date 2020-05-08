@@ -1,11 +1,7 @@
 <footer class="footer">
-    <div class="container">
-        <div class="columns has-text-centered">
-            {{ range .Site.Menus.footer }}
-            <div class="column is-narrow">
-                <a href="{{ .URL }}" class="">{{ .Name }}</a>
-            </div>
-            {{ end }}
-        </div>
-    </div>
+  <div class="content has-text-centered">
+    <p>
+      &copy; {{ now.Year }} C. Wang and R. Ma &middot; Powered by the Eureka theme for <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+    </p>
+  </div>
 </footer>

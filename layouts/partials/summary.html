@@ -1,0 +1,30 @@
+
+      
+
+<article class="box">
+  <h1 class="title is-spaced">
+    <a href='{{ .Permalink }}'>
+      {{ .Title }}
+    </a>
+  </h1>
+  <div class="field is-grouped is-grouped-multiline">
+    <div class="control">
+      <div class="tags has-addons">
+        <span class="tag">Date</span>
+        <span class="tag is-primary">{{ .Date.Format "Jan 2, 2006" }}</span>
+      </div>
+    </div>
+    <div class="control">
+      <div class="tags has-addons">
+        <span class="tag">Words</span>
+        <span class="tag is-primary">{{ .FuzzyWordCount }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    {{ .Summary }}
+  </div>
+  <footer>
+    <a href='{{ .Permalink }}'><nobr>Read more →</nobr></a>
+  </footer>
+</article>

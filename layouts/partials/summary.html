@@ -1,30 +1,59 @@
-
-      
-
 <article class="box">
-  <h1 class="title is-spaced">
-    <a href='{{ .Permalink }}'>
-      {{ .Title }}
-    </a>
-  </h1>
-  <div class="field is-grouped is-grouped-multiline">
-    <div class="control">
-      <div class="tags has-addons">
-        <span class="tag">Date</span>
-        <span class="tag is-primary">{{ .Date.Format "Jan 2, 2006" }}</span>
-      </div>
+    <h1 class="title is-spaced">
+        <a href='{{ .Permalink }}'>
+            {{ .Title }}
+        </a>
+    </h1>
+    <div class="content">
+        {{ .Summary }}
     </div>
-    <div class="control">
-      <div class="tags has-addons">
-        <span class="tag">Words</span>
-        <span class="tag is-primary">{{ .FuzzyWordCount }}</span>
-      </div>
+    <div class="columns is-variable is-2 is-vertical-2 is-multiline has-text-grey">
+        <div class="column is-narrow">
+            <span class="icon is-inline">
+                <i class="fas fa-calendar"></i>
+            </span>
+            <span>{{ dateFormat "Jan 2, 2006" .Date }}</span>
+        </div>
+        <div class="column is-narrow is-hidden-mobile">
+            <span>&middot;</span>
+        </div>
+        <div class="column is-narrow">
+            <span class="icon is-inline">
+                <i class="fas fa-clock"></i>
+            </span>
+            <span>{{ .ReadingTime }} min read</span>
+        </div>
+        <div class="column is-narrow is-hidden-mobile">
+            {{ with .GetTerms "categories" }}
+            <span>&middot;</span>
+        </div>
+        <div class="column is-narrow">
+            <span class="icon is-inline">
+                <i class="fas fa-folder"></i>
+            </span>
+            {{ range $index, $value := . }}
+            {{ if gt $index 0 }}
+            <span>, </span>
+            {{ end -}}
+            <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+            {{ end }}
+            {{ end }}
+        </div>
+        <div class="column is-narrow is-hidden-mobile">
+            {{ with .GetTerms "series" }}
+            <span>&middot;</span>
+        </div>
+        <div class="column is-narrow">
+            <span class="icon is-inline">
+                <i class="fas fa-th-list"></i>
+            </span>
+            {{ range $index, $value := . }}
+            {{ if gt $index 0 }}
+            <span>, </span>
+            {{ end -}}
+            <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+            {{ end }}
+            {{ end }}
+        </div>
     </div>
-  </div>
-  <div class="content">
-    {{ .Summary }}
-  </div>
-  <footer>
-    <a href='{{ .Permalink }}'><nobr>Read more →</nobr></a>
-  </footer>
 </article>

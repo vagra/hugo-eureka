@@ -1,17 +1,76 @@
 {{ define "main" }}
 <main>
-  <section class="section">
-    <article>
-      <div class="columns is-centered">
-          <div class="column max-800px">
-            <h1 class="title is-1">{{ .Title }}</h1>
-            <div class="content">
-              {{ .Content }}
-            </div>
-          </div>
+    <section class="section">
+        <div class="container">
+            <article>
+                <div class="columns is-centered">
+                    <div class="column max-800px">
+                        <h1 class="title is-1 is-spaced">{{ .Title }}</h1>
+                        {{ with .Params.subtitle }}
+                        <h2 class="subtitle is-3">{{ . }}</h2>
+                        {{ end }}
+                        <div class="columns is-variable is-2 is-vertical-2-mobile is-multiline has-text-grey">
+                            <div class="column is-narrow">
+                                <span class="icon is-inline">
+                                    <i class="fas fa-calendar"></i>
+                                </span>
+                                <span>{{ dateFormat "Jan 2, 2006" .Date }}</span>
+                            </div>
+                            <div class="column is-narrow is-hidden-mobile">
+                                <span>&middot;</span>
+                            </div>
+                            <div class="column is-narrow">
+                                <span class="icon is-inline">
+                                    <i class="fas fa-clock"></i>
+                                </span>
+                                <span>{{ .ReadingTime }} min read</span>
+                            </div>
+                            <div class="column is-narrow is-hidden-mobile">
+                                {{ with .GetTerms "categories" }}
+                                <span>&middot;</span>
+                            </div>
+                            <div class="column is-narrow">
+                                <span class="icon is-inline">
+                                    <i class="fas fa-folder"></i>
+                                </span>
+                                {{ range $index, $value := . }}
+                                {{ if gt $index 0 }}
+                                <span>, </span>
+                                {{ end -}}
+                                <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+                                {{ end }}
+                                {{ end }}
+                            </div>
+                            <div class="column is-narrow is-hidden-mobile">
+                                {{ with .GetTerms "series" }}
+                                <span>&middot;</span>
+                            </div>
+                            <div class="column is-narrow">
+                                <span class="icon is-inline">
+                                    <i class="fas fa-th-list"></i>
+                                </span>
+                                {{ range $index, $value := . }}
+                                {{ if gt $index 0 }}
+                                <span>, </span>
+                                {{ end -}}
+                                <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+                                {{ end }}
+                                {{ end }}
+                            </div>
+                        </div>
+                        <div class="content">
+                            {{ .Content }}
+                        </div>
+                        {{ with .GetTerms "tags" }}
+                        <div class="tags">
+                            {{ range $index, $value := . }}
+                            <a class="tag" href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>
+                            {{ end }}
+                        </div>
+                        {{ end }}
+                    </div>
+            </article>
         </div>
-    </article>
-  </section>
+    </section>
 </main>
-
 {{ end }}

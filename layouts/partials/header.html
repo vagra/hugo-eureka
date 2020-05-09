@@ -2,9 +2,7 @@
     <nav class="navbar is-fixed-top is-light" role="navigation">
         <div class="container">
             <div class="navbar-brand">
-                <a href="/" title="home" class="navbar-item">
-                    <span class="logo"><h1>{{ .Site.Title }}</h1></span>
-                </a>
+                <a href="/" class="navbar-item">{{ .Site.Title }}</a>
                 {{ range .Site.Menus.social }}
                 <a href="{{ .URL }}" class="navbar-item is-hidden-desktop" title="{{ .Name }}"><span
                         class="icon">{{ .Pre }}</span></a>
@@ -34,15 +32,15 @@
         document.addEventListener('DOMContentLoaded', () => {
             const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
             if ($navbarBurgers.length > 0) {
-              $navbarBurgers.forEach( el => {
-                el.addEventListener('click', () => {
-                  const target = el.dataset.target;
-                  const $target = document.getElementById(target);
-                  el.classList.toggle('is-active');
-                  $target.classList.toggle('is-active');
+                $navbarBurgers.forEach(el => {
+                    el.addEventListener('click', () => {
+                        const target = el.dataset.target;
+                        const $target = document.getElementById(target);
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+                    });
                 });
-              });
             }
-          });
+        });
     </script>
 </header>

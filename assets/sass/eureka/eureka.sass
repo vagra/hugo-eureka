@@ -5,3 +5,44 @@
   background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('/foo.jpg')
   background-repeat: no-repeat
   background-size: cover
+
+.has-vertical-padding-2
+  padding-top: 0.5rem
+  padding-bottom: 0.5rem
+
+@if $variable-columns
+  .columns.is-variable
+    --verticalGap: 0.75rem
+    .column
+      padding-top: var(--verticalGap)
+      padding-bottom: var(--verticalGap)
+    @for $i from 0 through 8
+      &.is-vertical-#{$i}
+        --verticalGap: #{$i * 0.25rem}
+      +mobile
+        &.is-vertical-#{$i}-mobile
+          --verticalGap: #{$i * 0.25rem}
+      +tablet
+        &.is-vertical-#{$i}-tablet
+          --verticalGap: #{$i * 0.25rem}
+      +tablet-only
+        &.is-vertical-#{$i}-tablet-only
+          --verticalGap: #{$i * 0.25rem}
+      +touch
+        &.is-vertical-#{$i}-touch
+          --verticalGap: #{$i * 0.25rem}
+      +desktop
+        &.is-vertical-#{$i}-desktop
+          --verticalGap: #{$i * 0.25rem}
+      +desktop-only
+        &.is-vertical-#{$i}-desktop-only
+          --verticalGap: #{$i * 0.25rem}
+      +widescreen
+        &.is-vertical-#{$i}-widescreen
+          --verticalGap: #{$i * 0.25rem}
+      +widescreen-only
+        &.is-vertical-#{$i}-widescreen-only
+          --verticalGap: #{$i * 0.25rem}
+      +fullhd
+        &.is-vertical-#{$i}-fullhd
+          --verticalGap: #{$i * 0.25rem}

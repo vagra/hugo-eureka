@@ -39,7 +39,8 @@
           </h1>
         </div>
         <div class="column">
-          {{ range first 10 .Site.RegularPages }}
+            {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+          {{ range first 10 $pages }}
             {{ partial "summary.html" . }}
           {{ end }}
         </div>

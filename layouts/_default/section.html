@@ -1,23 +1,23 @@
 {{ define "main" }}
-<main>
-  
-  <section class="section">
-    <div class="container">
-        <article>
-          <h1 class="title">{{.Title}}</h1>
-          {{ with .Content }}
-          <div class="content">
-            {{ . }}
-          </div>
-          {{ end }} 
-        </article>
-      </div>
-  </section>
+<main class="has-background-light">
 
   <section class="section">
     <div class="container">
+      <article>
+        <h1 class="title">{{.Title}}</h1>
+        {{ with .Content }}
+        <div class="content">
+          {{ . }}
+        </div>
+        {{ end }}
+      </article>
+    </div>
+  </section>
+
+  <section class="has-bottom-padding">
+    <div class="container">
       {{ range .Pages }}
-        {{ partial "summary.html" . }}
+      {{ partial "summary.html" . }}
       {{ end }}
     </div>
   </section>

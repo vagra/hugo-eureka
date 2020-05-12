@@ -4,7 +4,8 @@
   <title>
     {{ block "title" . }}{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}
   </title>
-  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{end }}{{ end }} ">
+  <meta name="description"
+    content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{end }}{{ end }} ">
   {{ $sass := resources.Get "sass/main.sass" }}
   {{ $style := $sass | resources.ToCSS }}
   <link rel="stylesheet" href="{{ $style.Permalink }}">

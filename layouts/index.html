@@ -1,5 +1,5 @@
 {{ define "main" }}
-<main>
+<main class="has-background-light">
   <section class="hero is-fullheight-with-navbar is-primary">
     <div class="hero-body">
       <div class="container">
@@ -39,15 +39,14 @@
           </h1>
         </div>
         <div class="column">
-            {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+          {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
           {{ range first 10 $pages }}
-            {{ partial "summary.html" . }}
+          {{ partial "summary.html" . }}
           {{ end }}
         </div>
       </div>
     </div>
   </section>
 </main>
-  
-{{ end }}
 
+{{ end }}

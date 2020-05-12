@@ -1,14 +1,12 @@
 @charset "utf-8"
 
+$navbar-extra-offset: 1rem
+
 .hero-img
   @extend .hero
   background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('/foo.jpg')
   background-repeat: no-repeat
   background-size: cover
-
-.has-vertical-padding-2
-  padding-top: 0.5rem
-  padding-bottom: 0.5rem
 
 @if $variable-columns
   .columns.is-variable
@@ -19,30 +17,110 @@
     @for $i from 0 through 8
       &.is-vertical-#{$i}
         --verticalGap: #{$i * 0.25rem}
-      +mobile
+      @include mobile
         &.is-vertical-#{$i}-mobile
           --verticalGap: #{$i * 0.25rem}
-      +tablet
+      @include tablet
         &.is-vertical-#{$i}-tablet
           --verticalGap: #{$i * 0.25rem}
-      +tablet-only
+      @include tablet-only
         &.is-vertical-#{$i}-tablet-only
           --verticalGap: #{$i * 0.25rem}
-      +touch
+      @include touch
         &.is-vertical-#{$i}-touch
           --verticalGap: #{$i * 0.25rem}
-      +desktop
+      @include desktop
         &.is-vertical-#{$i}-desktop
           --verticalGap: #{$i * 0.25rem}
-      +desktop-only
+      @include desktop-only
         &.is-vertical-#{$i}-desktop-only
           --verticalGap: #{$i * 0.25rem}
-      +widescreen
+      @include widescreen
         &.is-vertical-#{$i}-widescreen
           --verticalGap: #{$i * 0.25rem}
-      +widescreen-only
+      @include widescreen-only
         &.is-vertical-#{$i}-widescreen-only
           --verticalGap: #{$i * 0.25rem}
-      +fullhd
+      @include fullhd
         &.is-vertical-#{$i}-fullhd
           --verticalGap: #{$i * 0.25rem}
+
+.content h1:target
+  padding-top: $navbar-height + $navbar-extra-offset
+  margin-top: -($navbar-height + $navbar-extra-offset)
+  &:not(:first-child)
+    margin-top: calc( -#{$navbar-height + $navbar-extra-offset} - 0.5em + 1em )
+
+.content h2:target
+  padding-top: $navbar-height + $navbar-extra-offset
+  margin-top: -($navbar-height + $navbar-extra-offset)
+  &:not(:first-child)
+    margin-top: calc( -#{$navbar-height + $navbar-extra-offset} - 0.5714em + 1.1428em )
+
+.content h3:target
+  padding-top: $navbar-height + $navbar-extra-offset
+  margin-top: -($navbar-height + $navbar-extra-offset)
+  &:not(:first-child)
+    margin-top: calc( -#{$navbar-height + $navbar-extra-offset} - 0.6666em + 1.3333em )
+
+.content *:target
+  padding-top: $navbar-height + $navbar-extra-offset
+  margin-top: -($navbar-height + $navbar-extra-offset)
+
+.reverse-row-order
+  flex-direction: row-reverse
+
+.sticky-title
+  position: sticky
+  top: $navbar-height
+  align-self: start
+  padding-top: 0.75rem
+  padding-bottom: 0.75rem
+  padding-left: $box-padding
+  padding-right: $box-padding
+  background-color: $light
+  z-index: 1
+
+
+.sticky-toc
+  position: sticky
+  top: calc( #{$navbar-height} + #{$subtitle-size} + 3rem  )
+  align-self: start
+  z-index: 0
+
+.sticky-toc 
+  padding-top: 0
+  padding-bottom: $box-padding
+  padding-left: $box-padding
+  padding-right: $box-padding
+  transition: all 100ms ease-in-out
+
+  //* 3. ScrollSpy active styles (see JS tab for activation) */
+// .sticky-toc .active > a 
+//   color: $primary
+
+.has-bottom-padding
+  padding-bottom: nth($section-padding,1)
+
+.sticky-toc a
+  color: $grey
+  transition: all 50ms ease-in-out
+
+
+.sticky-toc a:hover,
+.sticky-toc a:focus 
+  color: $primary
+
+.has-vertical-padding
+  padding-top: nth($section-padding,1)
+  padding-bottom: nth($section-padding,1)
+
+@include tablet
+  .has-vertical-padding-tablet
+    padding-top: nth($section-padding,1)
+    padding-bottom: nth($section-padding,1)
+  
+.is-top-paddingless
+  padding-top: 0
+
+

@@ -1,0 +1,15 @@
+{{ if isset .Params "series" }}
+{{ $series := .Site.Taxonomies.series}}
+<div class="box is-radiusless">
+    <h2 class="subtitle">系列文章</h2>
+    <div class="content">
+        {{range .Params.series }}
+        {{ $key := . | urlize}}
+        {{ $value := index $series $key }}
+        {{ range $value}}
+        <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
+        {{end}}
+        {{end}}
+    </div>
+</div>
+{{end}}

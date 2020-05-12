@@ -1,0 +1,24 @@
+{{ with .GetTerms "tags" }}
+<div class="tags">
+    {{ range $index, $value := . }}
+    <a class="tag" href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>
+    {{ end }}
+</div>
+{{ end }}
+<div class="columns">
+    <div class="column is-half">
+        {{with .PrevInSection}}
+        <strong>上一页</strong>
+        <br />
+        <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{end}}
+    </div>
+    <div class="column is-half has-text-right-tablet">
+        {{with .NextInSection}}
+        <b>下一页</b><br />
+        <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        {{end}}
+    </div>
+</div>
+<div id="commento"></div>
+<script defer src="https://commento.csquare.wang:8079/js/commento.js">
+</script>

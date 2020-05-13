@@ -1,0 +1,82 @@
+{{ define "main" }}
+<main>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-one-quarter has-text-centered">
+                    <section class="section title">{{.Title}}</section>
+                    <text>{{ $.Param "role" }}</text>
+                </div>
+                <div class="column">
+                    <text class="container is-size-3">个人简介</text>
+                    <div class="has-vertical-padding is-size-5">
+                        {{ with .Content }}
+                        <div class="content">
+                            {{ . }}
+                        </div>
+                        {{ end }}
+                    </div>
+                    <div class="columns">
+                        <div class="column">
+                            <div class=" is-size-3">兴趣爱好</div>
+                            <br />
+                            {{ range $.Param "interests" }}
+                            <div class="has-margin-small">
+                                <span class="icon is-inline">
+                                    <i class="fas fa-graduation-cap fa-lg"></i>
+                                </span>
+                                <span class="is-size-5 has-left-padding-7px">{{ . }}</span>
+                            </div>
+
+
+                            <!-- <div class="columns  is-vcentered">
+                                <div class="column is-1">
+                                    <i class="far fa-grin-tongue fa-lg"></i>
+                                </div>
+                                <div class="column"><text class="is-size-5">{{ . }}</text><br /></div>
+                            </div> -->
+                            {{ end }}
+                        </div>
+                        <div class="column">
+                            <div class=" is-size-3">教育经历</div>
+                            <br />
+                            {{ range $.Param "education" }}
+                            <span class="icon is-inline">
+                                <i class="fas fa-graduation-cap fa-lg"></i>
+                            </span>
+                            <span class="is-size-5 has-left-padding-7px">{{ .institution }}</span><br />
+                            <div
+                                class="is-size-6 has-text-grey has-icon-padding-lg has-left-padding-7px has-margin-small">
+                                {{ .course }}
+                            </div>
+                            {{ end }}
+                        </div>
+                        <div class="column">
+                            <div class=" is-size-3">荣誉奖项</div>
+                            <br />
+                            {{ range $.Param "honor" }}
+                            <div class="has-margin-small">
+                                <span class="icon is-inline">
+                                    <i class="fas fa-award fa-lg"></i>
+                                </span>
+                                <span class="is-size-5 has-left-padding-7px">{{ . }}</span>
+                            </div>
+                            {{ end }}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            {{ range .Pages }}
+            {{ partial "summary.html" . }}
+            {{ end }}
+        </div>
+    </section>
+
+</main>
+{{ end }}

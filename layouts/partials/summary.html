@@ -7,53 +7,5 @@
     <div class="content">
         {{ .Summary }}
     </div>
-    <div class="columns is-variable is-2 is-vertical-2 is-multiline has-text-grey">
-        <div class="column is-narrow">
-            <span class="icon is-inline">
-                <i class="fas fa-calendar"></i>
-            </span>
-            <span>{{ dateFormat "Jan 2, 2006" .Date }}</span>
-        </div>
-        <div class="column is-narrow is-hidden-mobile">
-            <span>&middot;</span>
-        </div>
-        <div class="column is-narrow">
-            <span class="icon is-inline">
-                <i class="fas fa-clock"></i>
-            </span>
-            <span>{{ .ReadingTime }} min read</span>
-        </div>
-        <div class="column is-narrow is-hidden-mobile">
-            {{ with .GetTerms "categories" }}
-            <span>&middot;</span>
-        </div>
-        <div class="column is-narrow">
-            <span class="icon is-inline">
-                <i class="fas fa-folder"></i>
-            </span>
-            {{ range $index, $value := . }}
-            {{ if gt $index 0 }}
-            <span>, </span>
-            {{ end -}}
-            <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-            {{ end }}
-            {{ end }}
-        </div>
-        <div class="column is-narrow is-hidden-mobile">
-            {{ with .GetTerms "series" }}
-            <span>&middot;</span>
-        </div>
-        <div class="column is-narrow">
-            <span class="icon is-inline">
-                <i class="fas fa-th-list"></i>
-            </span>
-            {{ range $index, $value := . }}
-            {{ if gt $index 0 }}
-            <span>, </span>
-            {{ end -}}
-            <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-            {{ end }}
-            {{ end }}
-        </div>
-    </div>
+    {{ partial "post_metadata.html" . }}
 </article>

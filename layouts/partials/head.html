@@ -2,12 +2,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
   <title>
-    {{ block "title" . }}{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}
+    {{ block "title" . }}{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Params.Title }}{{ end }}
   </title>
   <meta name="description"
     content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{end }}{{ end }} ">
   {{ $sass := resources.Get "sass/main.sass" }}
   {{ $style := $sass | resources.ToCSS }}
   <link rel="stylesheet" href="{{ $style.Permalink }}">
-  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/js/all.min.js"></script>
+
+  {{ template "_internal/google_analytics_async.html" . }}
+  {{ template "_internal/opengraph.html" . }}
 </head>

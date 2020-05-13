@@ -93,7 +93,7 @@ $navbar-extra-offset: 1rem
   padding-bottom: $box-padding
   padding-left: $box-padding
   padding-right: $box-padding
-  transition: all 100ms ease-in-out
+  transition: all 300ms ease-in-out
 
   //* 3. ScrollSpy active styles (see JS tab for activation) */
 // .sticky-toc .active > a 
@@ -104,7 +104,7 @@ $navbar-extra-offset: 1rem
 
 .sticky-toc a
   color: $grey
-  transition: all 50ms ease-in-out
+  transition: all 200ms ease-in-out
 
 
 .sticky-toc a:hover,
@@ -123,4 +123,13 @@ $navbar-extra-offset: 1rem
 .is-top-paddingless
   padding-top: 0
 
+@include mobile
+  .has-shadow-mobile
+    box-shadow: 0 0px 0 1px rgba($scheme-invert, 0.1)
 
+.has-horizontal-box-padding
+  padding-right: $box-padding
+  padding-left: $box-padding
+
+.dark
+  $white-ter: hsl(0, 0%, 4%)

@@ -1,2 +1,2 @@
 # hugo-eureka
-Eureka is a hugo theme.
+Eureka is a theme for Hugo.

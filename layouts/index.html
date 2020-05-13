@@ -1,52 +1,56 @@
 {{ define "main" }}
-<main class="has-background-light">
-  <section class="hero is-fullheight-with-navbar is-primary">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-          Hero title
-        </h1>
-        <h2 class="subtitle">
-          Hero subtitle
-        </h2>
-      </div>
-    </div>
-  </section>
+<main>
+    <section class="hero is-fullheight-with-navbar is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Hero title
+                </h1>
+                <h2 class="subtitle">
+                    Hero subtitle
+                </h2>
+            </div>
+        </div>
+    </section>
 
-  {{ if isset .Params "title" }}
-  <section class="section">
-    <div class="container">
-      <article>
-        <h1 class="title">
-          {{.Title}}
-        </h1>
-        {{ with .Content }}
-        <div class="content">
-          {{ . }}
+    {{ if isset .Params "title" }}
+    <section class="section">
+        <div class="container">
+            <article>
+                <h1 class="title">
+                    {{.Title}}
+                </h1>
+                {{ with .Content }}
+                <div class="content">
+                    {{ . }}
+                </div>
+                {{ end }}
+            </article>
         </div>
-        {{ end }}
-      </article>
-    </div>
-  </section>
-  {{ end }}
+    </section>
+    {{ end }}
 
-  <section class="section">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-one-quarter">
-          <h1 class="title">
-            Recent Page
-          </h1>
+    <section>
+        <div class="container">
+            <div class="columns is-variable is-vertical-0-mobile">
+                <div class="column is-one-quarter">
+                    <div class="container has-vertical-padding has-horizontal-box-padding">
+                        <h1 class="title">
+                            Recent Page
+                        </h1>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="has-bottom-padding has-vertical-padding-tablet">
+                        {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+                        {{ range first 10 $pages }}
+                        {{ partial "summary.html" . }}
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="column">
-          {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
-          {{ range first 10 $pages }}
-          {{ partial "summary.html" . }}
-          {{ end }}
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 </main>
 
 {{ end }}

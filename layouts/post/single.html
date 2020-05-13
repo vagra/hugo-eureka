@@ -11,15 +11,10 @@
                         <article>
                             {{ partial "post_header.html" . }}
                             <div class="content">
+                                
                                 {{ .Content }}
                             </div>
-                            {{ with .GetTerms "tags" }}
-                            <div class="tags">
-                                {{ range $index, $value := . }}
-                                <a class="tag" href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>
-                                {{ end }}
-                            </div>
-                            {{ end }}
+                            {{ partial "post_footer.html" . }}
                         </article>
                     </div>
                 </div>

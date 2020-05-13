@@ -1,0 +1,58 @@
+$light-main: hsl(0, 0%, 100%)
+$light-main-bis: hsl(0, 0%, 98%)
+$light-main-ter: hsl(0, 0%, 96%) //background
+$light-invert: hsl(0, 0%, 4%)
+$light-invert-bis: hsl(0, 0%, 7%)
+$light-invert-ter: hsl(0, 0%, 14%)
+
+$light-text: hsl(0, 0%, 29%)
+$light-text-strong: hsl(0, 0%, 29%)
+
+$dark-main: hsl(0, 0%, 14%)
+$dark-main-bis: hsl(0, 0%, 7%)
+$dark-main-ter: hsl(0, 0%, 4%)
+$dark-invert: hsl(0, 0%, 100%)
+$dark-invert-bis: hsl(0, 0%, 98%)
+$dark-invert-ter: hsl(0, 0%, 96%)
+
+$dark-text: hsl(0, 0%, 71%)
+$dark-text-strong: hsl(0, 0%, 71%)
+
+// $body-background-color: $scheme-main-ter
+  
+// $scheme-ter: hsl(0, 0%, 96%)
+// $body-background-color: $scheme-main-ter
+
+html
+  --main: #{$light-main}
+  --main-bis: #{$light-main-bis}
+  --main-ter: #{$light-main-ter}
+  --invert: #{$light-invert}
+  --invert-bis: #{$light-invert-bis}
+  --invert-ter: #{$light-invert-ter}
+  --text: #{$light-text}
+  --text-strong: #{$light-text-strong}
+  @media (prefers-color-scheme: dark)
+    --main: #{$dark-main}
+    --main-bis: #{$dark-main-bis}
+    --main-ter: #{$dark-main-ter}
+    --invert: #{$dark-invert}
+    --invert-bis: #{$dark-invert-bis}
+    --invert-ter: #{$dark-invert-ter}
+    --text: #{$dark-text}
+    --text-strong: #{$dark-text-strong}
+    
+$scheme-main: var(--main)
+$scheme-main-bis: var(--main-bis)
+$scheme-main-ter: var(--main-ter)
+$scheme-invert: var(--invert)
+$scheme-invert-bis: var(--invert-bis)
+$scheme-invert-ter: var(--invert-ter)
+
+// $background: hsl(0, 0%, 96%)
+$body-background-color: $scheme-main-ter
+$text: var(--text)
+$text-strong: var(--text-strong)
+$content-blockquote-background-color: $scheme-main-ter
+// $tag-background-color: $scheme-main-ter
+// $content-blockquote-background-color: darken(#{$background})

@@ -11,7 +11,7 @@
 }
 
 .sticky-toc ul {
-  @apply text-base pl-8 list-disc;
+  @apply text-base pl-8;
 }
 
 .sticky-toc ol {

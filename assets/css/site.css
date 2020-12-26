@@ -11,11 +11,11 @@
 }
 
 .sticky-toc ul {
-  @apply text-base pl-8;
+  @apply text-sm pl-8;
 }
 
 .sticky-toc ol {
-  @apply text-base pl-8 list-decimal;
+  @apply text-sm pl-8 list-decimal;
 }
 
 .sticky-toc li + li {

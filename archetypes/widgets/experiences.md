@@ -1,32 +1,36 @@
 ---
-title: Blank
+title: {{ replace .Name "-" " " | title }}
 draft: false
+experiences:
+  - title:
+    organization:
+      name:
+      url:
+    dates:
+    location:
+    writeup:
 
-weight: 5
+weight:
 widget:
-  handler: blank
+  handler: experiences
 
   # Options: sm, md, lg and xl. Default is md.
-  width:
+  width: lg
 
   sidebar:
     # Options: left and right. Leave blank to hide.
-    position:
+    position: left
     # Options: sm, md, lg and xl. Default is md.
-    scale:
+    scale: md
   
   background:
     # Options: primary, secondary, tertiary or any valid color value. Default is primary.
     color:
-    image: images/hero-left.jpg
+    image:
     # Options: auto, cover and contain. Default is auto.
-    size: cover
+    size:
     # Options: center, top, right, bottom, left.
     position:
     # Options: fixed, local, scroll.
     attachment: 
 ---
-
-<div style="text-align:center">
-  <p>Write anything you like here!</p>
-</div>
